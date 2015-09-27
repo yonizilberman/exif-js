@@ -780,15 +780,17 @@
             if (data.hasOwnProperty(a)) {
                 if (typeof data[a] == "object") {
                     if (data[a] instanceof Number) {
-                        strPretty += a + " : " + data[a] + " [" + data[a].numerator + "/" + data[a].denominator + "]\r\n";
+                        strPretty += '{' + a + ': "' + data[a] + ' [' + data[a].numerator + '/' + data[a].denominator + ']"},\r\n';
                     } else {
-                        strPretty += a + " : [" + data[a].length + " values]\r\n";
+                        strPretty += '{' + a + ': ["' + data[a].length + ' values]"},\r\n';
                     }
                 } else {
-                    strPretty += a + " : " + data[a] + "\r\n";
+                    strPretty += '{' + a + ': "' + data[a] + '"},\r\n';
                 }
             }
         }
+        strPretty = strPretty.substring(0, str.length - 1);
+        strPretty = JSON.parse('{' + strPretty + '}');
         return strPretty;
     }
 
