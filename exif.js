@@ -780,16 +780,16 @@
             if (data.hasOwnProperty(a)) {
                 if (typeof data[a] == "object") {
                     if (data[a] instanceof Number) {
-                        strPretty += a + " : " + data[a] + " [" + data[a].numerator + "/" + data[a].denominator + "]\r\n";
+                        strPretty += '{' + a + ': "' + data[a] + ' [' + data[a].numerator + '/' + data[a].denominator + ']"}\r\n';
                     } else {
-                        strPretty += a + " : [" + data[a].length + " values]\r\n";
+                        strPretty += '{' + a + ': "[' + data[a].length + ' values]"}\r\n';
                     }
                 } else {
-                    strPretty += a + " : " + data[a] + "\r\n";
+                    strPretty += '{' + a + ': "' + data[a] + '"}\r\n';
                 }
             }
         }
-        return strPretty;
+        return strPretty.substring(0, strPretty.length - 1);
     }
 
     EXIF.readFromBinaryFile = function(file) {
